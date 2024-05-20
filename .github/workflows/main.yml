@@ -17,7 +17,7 @@ jobs:
           java-version: '17'
 
       - name: Unit tests
-        run: python test_final_model.py 
+        run: python -m pytest
 
       - name: Build the app
         run: uvicorn app:app --reload
