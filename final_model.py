@@ -230,7 +230,7 @@ print('tags =',tags)
 preprocessed_tags = pipeline_tags.fit_transform(tags)
 print("preprossed tags",preprocessed_tags[:10])
 
-# Filtrer les tags
+# Filtrer les tags op 20 tags
 '''from collections import defaultdict
 def calculate_token_frequency(body):
     token_frequency = defaultdict(int)
