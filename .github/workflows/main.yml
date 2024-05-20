@@ -28,6 +28,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
           pip install -r requirements.txt
+
+      - name: Download NLTK data
+        run: |
+          python -m nltk.downloader punkt
             
       - name: Run unit tests
         run: |
