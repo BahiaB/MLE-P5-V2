@@ -12,4 +12,4 @@ matplotlib
 gensim
 seaborn==0.11.2
 sentence_transformers
-bs4
+bs4 
