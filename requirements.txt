@@ -11,3 +11,5 @@ sentence_transformers
 bs4 
 nltk
 joblib
+pydantic
+fastapi
