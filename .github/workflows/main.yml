@@ -1,0 +1,28 @@
+
+name : Build and deply tags app
+on: 
+  push:
+
+jobs:
+  build-deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+
+      - name: install dependencies
+        run: python -m pip install pytest
+        
+      - name: Unit tests
+        run: |
+          pytest
+      - name: Build the app
+        run: uvicorn app:app --reload
