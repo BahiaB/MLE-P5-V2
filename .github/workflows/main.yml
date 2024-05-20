@@ -42,4 +42,4 @@ jobs:
 
       - name: Build the app
         run: |
-          uvicorn app:app --reload
+           python setup.py sdist bdist_wheel
