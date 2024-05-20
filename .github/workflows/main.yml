@@ -17,8 +17,8 @@ jobs:
           java-version: '17'
 
       - name: Unit tests
-        run: ./gradlew test_final_model.py
+        run: python test_final_model.py 
 
       - name: Build the app
-        run: ./gradlew build
+        run: uvicorn app:app --reload
     
