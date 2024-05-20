@@ -13,11 +13,15 @@ except Exception as e:
     print(f"Failed to load models: {e}")
     raise e
 
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
 class Item(BaseModel):
     text: str
 
 @app.post("/predict/")
 async def make_prediction(item: Item):
+    
     # Prétraitement
     processed_data = preprocessing([item.text])
     vec_data = vectorizer(processed_data)
