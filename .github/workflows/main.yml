@@ -17,7 +17,7 @@ jobs:
           java-version: '17'
 
       - name: Unit tests
-        run: ./gradlew test
+        run: ./gradlew test_final_model.py
 
       - name: Build the app
         run: ./gradlew build
