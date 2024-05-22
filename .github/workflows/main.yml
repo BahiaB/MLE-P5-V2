@@ -2,6 +2,7 @@
 name : Build and deply tags app
 on: 
   push:
+    branches: main
 
 jobs:
   build-deploy:
