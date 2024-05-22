@@ -17,7 +17,7 @@ import numpy as np
 from joblib import dump, load
 
 
-
+# Creation du pipeline de preproessing
 class TagsCleaner(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         return self
@@ -113,11 +113,12 @@ pipeline = Pipeline([
     ('text_lower', TextLower()),
     ('stop_words', TextStopWordRemover()),
     ('lemmatizer',TextLemmatizer()),
-    #('tags_cleaner', TagsCleaner())
 ])
 
+# Pipeline de nettoyage our les tags
 pipeline_tags = Pipeline([('tags_cleaner', TagsCleaner())])
 
+#Pipeline de vectorisation avec tfidf 
 class CustomTfidfVectorizer(BaseEstimator, TransformerMixin):
     def __init__(self, min_df=0.03, max_df=0.007, ngram_range=(1, 1), norm='l2', use_idf=True, stop_words='english'):
         self.min_df = min_df
@@ -168,32 +169,35 @@ def select_top_n_tags(probabilities, threshold, top_n=5):
         
         # Mettre à 1 les positions correspondant aux tags sélectionnés
         final_tags[i, top_n_indices] = 1
-    
+    print("final tags debug:",final_tags)
     return final_tags
+
    
 
 
 def preprocess_data(data):
-    # Supposons que vous avez déjà un pipeline de prétraitement défini
+    # create and instanciate de preprocessing Pipeline
     preprocessed_data = pipeline.transform(data)
     return preprocessed_data
 
 def vectorize_data(data):
-    # Supposons que vous avez déjà un pipeline de vectorisation défini
+    # create and instanciate Vectorisation
     data = [' '.join(text) for text in data]
     vectorized_data = pipeline_tfidf.transform(data)
     return vectorized_data
 
 def final_model(data):
     
-    # Prédire les probabilités
+    # Predict probabilities
     predictions = pipeline_clf.predict_proba(data)
-    # Sélectionner les tags
+    # Sélect tags
     probabilities = predictions
     binary_predictions = select_top_n_tags(probabilities, 0.2, top_n=7)
     
     predictions_labels =mlb.inverse_transform(binary_predictions)
     return predictions_labels
+
+
 ##### Preprocessing #####
 
 # Load data
@@ -218,7 +222,7 @@ dump(preprocess_data, 'preprocess_function.joblib')
 loaded_preprocess_function = load('preprocess_function.joblib')
 
 # Utiliser la fonction chargée pour traiter de nouvelles données
-new_data = ["python data, preproccessing parameter to control this behavior"]
+new_data = ["android jetpack navigation bottomnavigationview youtube instagram proper back navigation fragment back "]
 processed_new_data = loaded_preprocess_function(new_data)
 print('processed_new_data',processed_new_data)
 

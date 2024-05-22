@@ -1,5 +1,5 @@
 import pytest
-from final_model import TagsCleaner, HtmlCleaner, TextTokenizer, TextLower,TextLemmatizer, TextStopWordRemover
+from final_model import TagsCleaner, HtmlCleaner, TextTokenizer, TextLower,TextLemmatizer, TextStopWordRemover, select_top_n_tags
 
 def test_tags_cleaner():
     cleaner = TagsCleaner()
@@ -36,3 +36,4 @@ def test_text_lemmatizer():
     text = ['running', 'tests']
     expected_output = ['run', 'test']  # assuming the lemmatizer converts 'running' to 'run' and 'tests' to 'test'
     assert lemmatizer.transform([text]) == [expected_output]
+
