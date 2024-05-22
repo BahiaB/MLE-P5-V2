@@ -40,6 +40,4 @@ jobs:
         run: |
           pytest
 
-      - name: Build the app
-        run: |
-           uvicorn app:app -- reload
+     
