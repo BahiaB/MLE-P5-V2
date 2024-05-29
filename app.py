@@ -22,7 +22,7 @@ class Item(BaseModel):
 @app.post("/predict/")
 async def make_prediction(item: Item):
 
-    # Prétraitement
+    # Prétrait
     processed_data = preprocessing([item.text])
     vec_data = vectorizer(processed_data)
     prediction = model(vec_data)

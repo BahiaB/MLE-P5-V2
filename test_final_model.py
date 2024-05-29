@@ -37,3 +37,9 @@ def test_text_lemmatizer():
     expected_output = ['run', 'test']  # assuming the lemmatizer converts 'running' to 'run' and 'tests' to 'test'
     assert lemmatizer.transform([text]) == [expected_output]
 
+
+'''def test_vectorize_data(data):
+    # create and instanciate Vectorisation
+    data = ['This is a test']
+    vectorized_data = pipeline_tfidf.transform(data)
+    return vectorized_data'''
