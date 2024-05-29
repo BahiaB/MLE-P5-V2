@@ -13,4 +13,8 @@ nltk
 joblib
 pydantic
 fastapi
-# downlowx nltk (stoword, punkt, 
+uvicorn
+requests
+flask
+
+pytest
